@@ -167,5 +167,5 @@ if __name__ == "__main__":
         Ingest(x,D)
         
     #Computing TopX
-    x = 1
+    x = 2
     TopXSimpleLTVCustomers(x, D)
