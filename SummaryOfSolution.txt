@@ -1,0 +1,14 @@
+CONSTRAINT: You will define an in-memory data structure
+
+Due the above contraint I used Hash of Hashes similar to a document database, but in memory. From solely  analytics prespective RDBMS will be a good option.
+
+PERFORMANCE - what the performance characteristic of the code is and how it could be improved in the future.
+
+This process executes sequentially and is limited to the memory of the machine. Have pre computed some of the metrics which is good for the SUMMARY of a USER or to compute AGGREGATED metircs for all the activity of a user. 
+
+For SCALING this solution:
+
+DataStore can be a NoSQL as it speeds up individual transactions and can be parallel
+Every event can be it's own entity/Store
+Some of the other additive metrix can be counputed at the time of ETL
+SPARK SQL can be used to pull this data into memory and execute analytics on it.

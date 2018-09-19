@@ -48,14 +48,17 @@ Sample Data Structure Used for processing:
  'data': {
 	'96f55c7d8f42': {  'CUSTOMER': {'adr_city': 'Middletown', 'adr_state': 'AK', 'event_time': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000), 'joinDate': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000),  'last_name': 'Smith'},
 					   'IMAGE': 1,
+					   'IMAGE_DETAIL': {'camera_make': 'Canon', 'camera_model': 'EOS 80D', 'event_time': datetime.datetime(2017, 1, 6, 12, 47, 12, 344000),  'key': 'd8ede43b1d9f'},
 					   'ORDER': {'order_count': 2, 'total_amount': 22.68},
 					   'ORDER_DETAIL': {'68d84e5d1a43': (10.34, datetime.datetime(2017, 1, 8, 12, 55, 56, 555000)),
 										'68d84e5d1a44': (12.34, datetime.datetime(2017, 1, 6, 12, 55, 55, 555000))},
-					   'SITE_VISIT': 1},
+					   'SITE_VISIT': 1,
+					   'SITE_VISIT_DETAIL': {'event_time': datetime.datetime(2017, 1, 6, 12, 45, 52, 41000), 'key': 'ac05e815502f', 'tags': [{'some key': 'some value'}]}},},
    
   '96f55c7d8f43': {'CUSTOMER': {'adr_city': 'Middletown', 'adr_state': 'AK', 'event_time': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000), 'joinDate': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000), 'last_name': 'Smith3'},
 				   'IMAGE': 0,
+				   'IMAGE_DETAIL': {},
 				   'ORDER': {'order_count': 0, 'total_amount': 0},
 				   'ORDER_DETAIL': {},
-				   'SITE_VISIT': 0}}
+				   'SITE_VISIT': 0, 'SITE_VISIT_DETAIL': {'event_time': datetime.datetime(2017, 1, 6, 12, 45, 52, 41000), 'key': 'ac05e815502f',  'tags': [{'some key': 'some value'}]}}}
    }
