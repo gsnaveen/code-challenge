@@ -1,6 +1,6 @@
 CONSTRAINT: You will define an in-memory data structure
 
-Due the above contraint I used Hash of Hashes similar to a document database, but in memory. From solely  analytics prespective RDBMS will be a good option.
+Due the above contraint Hash of Hashes was used similar to a document database, but in memory. From solely  analytics prespective RDBMS will be a good option.
 
 PERFORMANCE - what the performance characteristic of the code is and how it could be improved in the future.
 
@@ -9,6 +9,7 @@ This process executes sequentially and is limited to the memory of the machine. 
 For SCALING this solution:
 
 DataStore can be a NoSQL as it speeds up individual transactions and can be parallel
+(if using hadoop Hbase can be used as a external source for a Hive table. this gives advantage of NoSQL for transaction and provided RDBMS structure for analytics)
 Every event can be it's own entity/Store
-Some of the other additive metrix can be counputed at the time of ETL
+Some of the other additive metrix can be pre counputed at the time of ETL
 SPARK SQL can be used to pull this data into memory and execute analytics on it.
