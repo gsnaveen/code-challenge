@@ -1,0 +1,61 @@
+Language : Python 
+version	 : 3.6.2
+Execution : pyhton cltv.py
+			python cltv_test.py
+Libraries used 
+	processing 	: json (For reading the data)
+				  datetime (date computation)
+				  heapq (for keeping top X  LTV values)
+	testing		: unittest
+
+Events with the following are considered for computation of LTV:
+        # If orders > 0
+        # If order amount > 0 , It is possible that a order was cancelled so order amount can end up being Zero 
+        # Customer information , we need to have a valid joinDate which should be in the range of min and max of the date in the dataset 
+        # Visits > 0
+		# joinDate needs to be >= Mindate of dataset and <= MaxDate of the dataset
+        # as these elemets are required for computing Customer LTV
+
+Week: For computation purpose week = 7 days.  (MaxDate - Customer joinDate)/7
+
+Add/Update: Event Date is used for driving add or update to the dataset 
+
+Computed attributes:
+		MaxDate: Max date in the dataset
+		MinDate: Min date in the dataset
+		
+		Per Customer:
+			order_count: Number of the orders
+			total_amount: Total amount for the orders placed
+			SITE_VISIT count: Number of visit events recieved
+			IMAGE count		: Number of IMAGE events recieved
+Data Exceptions:
+		No expection handeling is done for Key and EventTime as these attributes are guaranteed
+		if type is not matched then print: Data not mapped! with data
+		customer_id != ""
+		Order total amount needs to be valid
+		
+test Cases:
+		Insert else update for the customer information
+		updates to  total_amount as per the order data sequence
+		(there can be lot more)
+		Manually validate for TopX if x = 10 there are 2 customeriD's in the out file and if x = 1 then there is only 1 cutomerID in the out file.
+		
+		
+Sample Data Structure Used for processing:
+{'MaxDate': datetime.datetime(2017, 1, 8, 12, 55, 56, 555000),
+ 'MinDate': datetime.datetime(2017, 1, 5, 12, 55, 56, 555000),
+ 'data': {
+	'96f55c7d8f42': {  'CUSTOMER': {'adr_city': 'Middletown', 'adr_state': 'AK', 'event_time': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000), 'joinDate': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000),  'last_name': 'Smith'},
+					   'IMAGE': 1,
+					   'ORDER': {'order_count': 2, 'total_amount': 22.68},
+					   'ORDER_DETAIL': {'68d84e5d1a43': (10.34, datetime.datetime(2017, 1, 8, 12, 55, 56, 555000)),
+										'68d84e5d1a44': (12.34, datetime.datetime(2017, 1, 6, 12, 55, 55, 555000))},
+					   'SITE_VISIT': 1},
+   
+  '96f55c7d8f43': {'CUSTOMER': {'adr_city': 'Middletown', 'adr_state': 'AK', 'event_time': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000), 'joinDate': datetime.datetime(2017, 1, 6, 12, 46, 46, 384000), 'last_name': 'Smith3'},
+				   'IMAGE': 0,
+				   'ORDER': {'order_count': 0, 'total_amount': 0},
+				   'ORDER_DETAIL': {},
+				   'SITE_VISIT': 0}}
+   }
