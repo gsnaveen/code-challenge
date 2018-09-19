@@ -23,7 +23,9 @@ def Ingest(e, D):
         
         D["data"][theKey] = { "CUSTOMER" :{"last_name":"" , "adr_city": "","adr_state":"","event_time":datetime.min,"joinDate": datetime.max},
                             "SITE_VISIT":0 ,
+                            "SITE_VISIT_DETAIL" : {},
                             "IMAGE":0,
+                            "IMAGE_DETAIL" :{},
                             "ORDER":{"total_amount":0,"order_count":0},
                             "ORDER_DETAIL" : {}
                              }
@@ -44,10 +46,19 @@ def Ingest(e, D):
     elif e["type"] == "SITE_VISIT":     #verb NEW
         #update the number of visit counter 
         D["data"][theKey]["SITE_VISIT"] += 1
+        #Add individual records
+        D["data"][theKey]["SITE_VISIT_DETAIL"]["key"] = e["key"]
+        D["data"][theKey]["SITE_VISIT_DETAIL"]["event_time"] = evantDtt
+        D["data"][theKey]["SITE_VISIT_DETAIL"]["tags"] = e["tags"]
         
     elif e["type"] == "IMAGE":          #verb UPLOAD
         #update the number of image upload counter
         D["data"][theKey]["IMAGE"] += 1
+        #Add individual records
+        D["data"][theKey]["IMAGE_DETAIL"]["key"] = e["key"]
+        D["data"][theKey]["IMAGE_DETAIL"]["event_time"] = evantDtt
+        D["data"][theKey]["IMAGE_DETAIL"]["camera_make"] = e["camera_make"]
+        D["data"][theKey]["IMAGE_DETAIL"]["camera_model"] = e["camera_model"]
         
     elif e["type"] == "ORDER":          #verb NEW   UPDATE
         
@@ -167,5 +178,5 @@ if __name__ == "__main__":
         Ingest(x,D)
         
     #Computing TopX
-    x = 2
+    x = 10
     TopXSimpleLTVCustomers(x, D)
