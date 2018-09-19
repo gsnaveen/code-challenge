@@ -4,7 +4,7 @@ Due the above contraint I used Hash of Hashes similar to a document database, bu
 
 PERFORMANCE - what the performance characteristic of the code is and how it could be improved in the future.
 
-This process executes sequentially and is limited to the memory of the machine. Have pre computed some of the metrics which is good for the SUMMARY of a USER or to compute AGGREGATED metircs for all the activity of a user. 
+This process executes sequentially and is limited to the memory of the machine. Have pre computed some of the metrics which is good for the SUMMARY of a USER or to compute AGGREGATED metircs for all the activity of a user. This speeds up the specific usecase. Since all other data is in the Data Structure we can do other analytics on it. 
 
 For SCALING this solution:
 

@@ -29,11 +29,18 @@ Computed attributes:
 			total_amount: Total amount for the orders placed
 			SITE_VISIT count: Number of visit events recieved
 			IMAGE count		: Number of IMAGE events recieved
-Data Exceptions:
+			
+Attributes Not Stored:
+		verb: as it is to be used for transactions, Since transactions can be recieved in any order this does not play a significent role.
+		type: is translated into entity. Since data can be easily identified using a entity it's relavence at the time of analytics is minimal.
+		
+			
+Data Exceptions: Are print Statement. They can be writtent to file and Support team can be notified
+
 		No expection handeling is done for Key and EventTime as these attributes are guaranteed
-		if type is not matched then print: Data not mapped! with data
-		customer_id != ""
-		Order total amount needs to be valid
+		if type is not a match then print: Data not mapped! + Event Data
+		customer_id = "" Print "Not a valid customer id : "  + Event Data
+		Order total amount needs to be valid if error then print "Order total amount not valid :" + Event Data
 		
 test Cases:
 		Insert else update for the customer information
